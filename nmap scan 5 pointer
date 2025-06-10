@@ -1,0 +1,24 @@
+Open a terminal in your Linux system.
+
+Run the Nmap service/version scan:
+
+nmap -sV 192.168.56.101
+-sV enables version detection, which helps identify which service (and version) is running on each open port.
+
+Wait for the scan to complete.
+
+From the output, choose 3 services and their ports.
+For example:
+
+pgsql
+PORT     STATE SERVICE     VERSION
+22/tcp   open  ssh         OpenSSH 7.9
+80/tcp   open  http        Apache httpd 2.4.29
+3306/tcp open  mysql       MySQL 5.7.25
+Take a screenshot of the terminal output showing these results.
+
+📝 Example Answer (Text Part):
+Port	Service	Version
+22/tcp	ssh	OpenSSH 7.9
+80/tcp	http	Apache 2.4.29
+3306/tcp	mysql	MySQL 5.7.25
