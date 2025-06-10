@@ -1,0 +1,46 @@
+Use the strings tool to analyze a given .exe file and search for keywords that may indicate network connections or login-related data (such as "login", "api", "token"). Then, select at least two relevant values and save them in a .txt file.
+Step-by-Step:
+1. Open Terminal (Linux) or Command Prompt (Windows with Sysinternals or Ghidra tools).
+2. Run strings on the .exe file:
+On Linux:
+
+strings suspicious.exe > all_strings.txt
+On Windows (with Sysinternals or Ghidra installed):
+cmd
+strings suspicious.exe > all_strings.txt
+3. Search for relevant keywords:
+You can open all_strings.txt in a text editor and look for:
+
+login
+
+password
+
+token
+
+api
+
+http, https
+
+IP addresses or domain names
+
+Or use grep (Linux/macOS) to search automatically:
+
+
+grep -iE "login|api|token|auth|http" all_strings.txt
+4. Select at least two meaningful values from the results. For example:
+https://api.example.com/v1/login
+
+Authorization: Bearer 9fj29fj209fj20fj2
+
+5. Save them to a separate text file:
+bash
+Copy
+Edit
+echo "https://api.example.com/v1/login" > findings.txt
+echo "token=ABCD1234XYZ" >> findings.txt
+Or manually paste into findings.txt using a text editor.
+
+📝 Example Output (findings.txt):
+
+https://api.hackserver.com/v1/auth
+token=abc123def456
