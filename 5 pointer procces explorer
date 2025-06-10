@@ -1,0 +1,32 @@
+Process Explorer-i aç:
+
+Process Explorer rəsmi Microsoft saytından yüklə.
+
+procexp.exe faylını işə sal.
+
+explorer.exe prosesini tap:
+
+Siyahıda explorer.exe prosesini tap və sağ klik → Properties seç.
+
+"DLLs" sekmesine keç:
+
+Açılan pəncərədə "DLLs" sekmesini seç.
+
+Burada həmin prosesə yüklənmiş bütün DLL faylları görünəcək.
+
+Sıralama et:
+
+"Base Address" və ya "Path" sütununu sıralayaraq ən son yüklənmiş DLL faylını tap.
+
+Daha dəqiq nəticə üçün "Load Time" sütunu varsa, onu da sıralaya bilərsən. Bu sütun standartda görünmür, lakin əlavə etmək olur.
+
+Ekran görüntüsü al:
+
+Ən son yüklənmiş DLL-i göstərən hissənin screenshotunu çək (Print Screen və ya Snipping Tool ilə).
+
+Cavab nümunəsi üçün (əgər təqdim edəcək olsan):
+Ən son yüklənmiş DLL: example.dll
+
+Ekran görüntüsü: (buraya şəklin əlavə olunması)
+
+Əgər istəyirsənsə, sənə nümunə şəkli və ya bu addımların avtomatlaşdırılması ilə bağlı yardım da edə bilərəm. Sənədi təqdim etməyin üçün şəkil faylını bura yükləyə bilərsən, mən də onun analizində kömək edim.
