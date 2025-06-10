@@ -1,0 +1,46 @@
+Using Sysinternals Process Monitor (Procmon.exe), monitor the file system changes made by the notepad.exe process. Set a filter in Procmon to record only file operations performed by notepad.exe. Identify at least 2 files and describe the changes made to them.
+
+Step-by-step instructions:
+Run Process Monitor as Administrator:
+
+Download and launch Procmon.exe from the Sysinternals Suite.
+
+Run it with administrative privileges.
+
+Set a filter for notepad.exe:
+
+Click on Filter → Filter... or press Ctrl + L.
+
+Add a filter rule:
+
+Process Name → is → notepad.exe → Include
+
+Click Add, then OK.
+
+Filter only file system operations:
+
+To focus on file operations, you can further filter by Operation → begins with → WriteFile, CreateFile, DeleteFile, or simply observe file system-related operations.
+
+Or, after capturing, you can sort and filter by Operation column showing file operations.
+
+Start monitoring and perform some actions in Notepad:
+
+Open Notepad and open or create some files, then save or modify them.
+
+Stop capturing in Procmon after the actions are done:
+
+Click the capture icon or press Ctrl + E to stop.
+
+Analyze the captured events:
+
+Look for file operations related to at least two different files.
+
+Note the file path, operation type (e.g., WriteFile, CreateFile), and the effect of the change (e.g., file creation, modification).
+
+Example answer format:
+File 1: C:\Users\User\Documents\example.txt
+Change: File was opened and modified (WriteFile operation).
+
+File 2: C:\Users\User\AppData\Local\Temp\~tmpfile.txt
+Change: Temporary file created and written during Notepad session.
+
