@@ -1,0 +1,118 @@
+Here’s a detailed English explanation and suggested answers for Ticket D tasks:
+
+⸻
+
+1. Find full path of suspicious process updater.exe (Easy, 5 points)
+
+Tool: Use wmic (Windows Management Instrumentation Command-line) or powershell on Windows.
+
+Command example with wmic:
+
+wmic process where name="updater.exe" get ProcessId, ExecutablePath
+
+Explanation: This command lists running processes named updater.exe and shows their full executable paths.
+
+⸻
+
+2. BPF filter for TCP packets with SYN flag only (Easy, 5 points)
+
+Filter syntax:
+
+tcp[tcpflags] & (tcp-syn) != 0 and tcp[tcpflags] & (tcp-ack) == 0
+
+Or more commonly:
+
+tcp[tcpflags] == tcp-syn
+
+Explanation:
+This filter captures TCP packets where only the SYN flag is set (i.e., connection initiation packets without the ACK flag), which helps identify SYN flood traffic.
+
+⸻
+
+3. Count repeated “Failed password” messages in log (Easy, 5 points)
+
+Command:
+
+grep "Failed password" /var/log/auth.log | wc -l
+
+Explanation:
+Searches log for “Failed password” entries and counts how many times they appear.
+
+⸻
+
+4. Check if any IP has more than 3 failed login attempts (Medium, 10 points)
+
+Commands:
+
+grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | awk '$1 > 3'
+
+Explanation:
+	•	Extract IP addresses from failed password lines (assuming IP is the 4th last field).
+	•	Sort and count occurrences.
+	•	Filter IPs with more than 3 failures.
+
+⸻
+
+5. Identify service for unusual port via terminal (Medium, 10 points)
+
+Tool: nmap
+
+Command example:
+
+nmap -sV -p <port_number> <target_ip>
+
+Explanation:
+nmap performs a version/service scan on the specified port to identify what service or application is listening there.
+
+⸻
+
+6. Wireshark filter for SYN packets with no ACK reply (Medium, 10 points)
+
+Filter syntax:
+
+tcp.flags.syn == 1 and tcp.flags.ack == 0 and !tcp.analysis.ack_rtt
+
+Or simplified to filter only SYN packets without ACK response:
+
+tcp.flags == 0x02 and !tcp.analysis.ack_rtt
+
+Explanation:
+Filters TCP SYN packets that have no corresponding ACK, useful for detecting SYN flood or half-open connections.
+
+⸻
+
+7. Incident analysis on traffic_capture.pcap (Hard, 20 points)
+
+a) DNS queries followed by HTTP POST indicate:
+Stage: Command & Control (C2) communication or data exfiltration.
+Risk: Attackers use DNS to locate their server and POST to send stolen data or receive commands.
+
+b) Detecting C2 server connection in Wireshark:
+	•	Look for unusual DNS queries resolving to suspicious IPs.
+	•	Follow TCP streams with HTTP POST or encrypted traffic to unknown IPs.
+	•	Check endpoints with uncommon geolocations or domains.
+
+c) Filtering Base64 encoded data in Wireshark:
+	•	Use display filter:
+
+frame contains "base64"
+
+
+	•	Or filter by protocol fields carrying encoded payloads (e.g., HTTP, SMTP).
+	•	Can also filter by matching patterns in payload.
+
+d) Suspicious system activities in malware sandbox:
+	•	Creation of new or hidden processes.
+	•	Unexpected network connections (especially to external IPs).
+	•	File system modifications, registry changes.
+	•	Execution of PowerShell or scripting commands.
+
+e) Incident response actions:
+	•	Isolate affected systems to stop spread.
+	•	Preserve logs and capture network traffic for forensics.
+	•	Block malicious IPs/domains on firewall.
+	•	Patch vulnerabilities, change passwords, and notify stakeholders.
+
+⸻
+
+If you want, I can help you craft exact commands or Wireshark filters, or help prepare a detailed report for the incident response!
