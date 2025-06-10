@@ -1,0 +1,118 @@
+1. Check if the DLL is packed (e.g., with UPX):
+Use the command:
+
+bash
+Copy
+Edit
+upx -t suspicious.dll
+or
+
+bash
+Copy
+Edit
+die suspicious.dll
+(using Detect It Easy (DIE) GUI tool)
+
+If it’s packed with UPX, it will say:
+"Packed with UPX"
+
+2. Unpack the DLL (if packed):
+If it’s UPX packed, run:
+
+bash
+Copy
+Edit
+upx -d suspicious.dll
+For other packers, use tools like:
+
+PEiD
+
+Exeinfo PE
+
+Unpack manually in a sandbox or debugger (e.g., x64dbg)
+
+3. Extract and analyze strings:
+Run:
+
+bash
+Copy
+Edit
+strings suspicious.dll > output.txt
+Search for suspicious keywords in the output such as:
+
+socket
+
+keylogger
+
+powershell
+
+cmd.exe
+
+URLs or IP addresses
+
+Encryption-related terms (e.g., AES, RC4)
+
+4. Check DLL Imports and API Calls:
+Use PEStudio or Dependency Walker:
+
+In PEStudio:
+
+Look under "Imports" or "Indicators"
+
+Look for suspicious APIs:
+
+CreateRemoteThread
+
+VirtualAlloc
+
+WriteProcessMemory
+
+WinExec, ShellExecute, InternetOpen, etc.
+
+In Dependency Walker:
+
+Open the .dll file and examine the DLLs and APIs it imports.
+
+5. Scan on VirusTotal:
+Go to https://www.virustotal.com/
+
+Upload the .dll file
+
+Review the detection names, AV engines, and behaviors flagged.
+
+6. Determine the threat type:
+Based on:
+
+Strings (e.g., presence of keylogger, ransom, etc.)
+
+API usage (e.g., injecting code, creating sockets, file encryption)
+
+VirusTotal results (label names like Trojan, Ransomware, Spyware)
+
+You can classify the file as one of the following (if applicable):
+
+Spyware
+
+Keylogger
+
+RAT (Remote Access Trojan)
+
+Ransomware
+
+Dropper (delivers other malware)
+
+Backdoor
+
+📝 Example Summary Answer:
+Packed: Yes, packed with UPX
+
+Unpacked successfully: Yes
+
+Suspicious Strings Found: powershell, socket, cmd.exe
+
+API Calls: CreateRemoteThread, VirtualAlloc, LoadLibrary
+
+VirusTotal Detections: 35/70 – Detected as Trojan.RAT, Backdoor.Generic
+
+Threat Type: Remote Access Trojan (RAT)
+
