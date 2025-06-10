@@ -1,0 +1,36 @@
+Task:
+Using Wireshark, capture or open 1 minute of network traffic and filter only ICMP messages. Then, determine how many ICMP packets were captured and provide a screenshot as proof.
+
+Step-by-step instructions:
+Open Wireshark.
+
+Start capturing traffic on your network interface for 1 minute:
+
+Click the capture interface, then press the blue shark fin icon to start.
+
+Let it run for 60 seconds.
+
+Stop the capture.
+
+Apply the ICMP filter:
+
+In the filter bar, type:
+
+icmp
+Press Enter.
+
+Check the number of displayed packets:
+
+Look at the bottom left corner of Wireshark window, where it shows how many packets are currently displayed (after filtering).
+
+This number is the count of ICMP packets captured.
+
+Take a screenshot showing:
+
+The applied filter (icmp in filter bar).
+
+The packet count displayed.
+
+Example answer format:
+Number of ICMP packets captured: 25
+
