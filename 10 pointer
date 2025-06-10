@@ -1,0 +1,46 @@
+Open the .pcap file in Wireshark:
+
+Launch Wireshark and open the given .pcap capture file containing FTP traffic.
+
+Filter FTP traffic:
+
+In the Wireshark filter bar, type:
+
+kotlin
+Copy
+Edit
+ftp || ftp-data
+This filters FTP commands and data packets.
+
+Identify the file transfer:
+
+Look for FTP commands like RETR which indicate file retrieval.
+
+In the command packets, you can often see the file name being requested or transferred.
+
+Follow the FTP data stream:
+
+Right-click on a relevant FTP data packet → Follow → TCP Stream or Follow → FTP Data Stream (depending on Wireshark version).
+
+This allows you to see the raw transferred file content.
+
+Export the file:
+
+Go to File → Export Objects → FTP...
+
+Wireshark will show a list of files transferred via FTP in this capture.
+
+Select the file(s) and save them to your disk.
+
+Identify the file type:
+
+The file name and extension will be visible in the export window.
+
+Alternatively, after saving, check the file properties or open it with an appropriate program to verify the type.
+
+Example Answer Format:
+File Name: example.txt
+
+File Type: .txt
+
+If you provide the .pcap file or specific details, I can assist with the exact file name and type!
