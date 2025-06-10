@@ -1,0 +1,40 @@
+Step-by-step instructions:
+Install the tools if not already installed:
+
+On Debian/Ubuntu:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install rkhunter chkrootkit
+Run rkhunter:
+
+bash
+Copy
+Edit
+sudo rkhunter --checkall
+Or run chkrootkit:
+
+bash
+Copy
+Edit
+sudo chkrootkit
+Review the output:
+
+Look for lines indicating warnings, suspected rootkits, or malicious components.
+
+Note down suspicious rootkits or malware names.
+
+Briefly describe their potential use:
+
+Examples:
+
+Linux Rootkit: Used to hide processes or files, gain persistent unauthorized access.
+
+Backdoor: Allows remote control over the server.
+
+Keylogger: Captures user keystrokes to steal passwords.
+
+Trojan: Malicious software disguised as legitimate.
+
