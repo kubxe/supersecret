@@ -1,0 +1,46 @@
+Task:
+On a Windows machine, find out which services are listening for HTTP traffic (port 80). Run the command:
+
+bash
+Copy
+Edit
+netstat -ano | find ":80"
+Then, use tasklist to identify the processes using those ports. Provide 2 ports and their corresponding process names.
+
+Step-by-step instructions:
+Open Command Prompt as Administrator:
+
+Press Win + R, type cmd, and press Ctrl + Shift + Enter to open with admin rights.
+
+Run netstat command to find ports listening on port 80:
+
+bash
+Copy
+Edit
+netstat -ano | find ":80"
+This lists all connections and listening ports involving port 80.
+
+The output includes the local address, state, and PID (Process ID).
+
+Note down the PIDs from the output:
+
+Identify the Process IDs (PIDs) corresponding to entries with port 80.
+
+Find the process names for those PIDs:
+
+bash
+Copy
+Edit
+tasklist /FI "PID eq <PID>"
+Replace <PID> with the actual Process ID number.
+
+This will show the process name running on that PID.
+
+Repeat step 4 for at least 2 different PIDs using port 80.
+
+Prepare your answer listing:
+
+Port 80 - Process Name (e.g., 80 - svchost.exe)
+
+Another port with 80 in the connection - Process Name
+
