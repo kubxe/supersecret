@@ -1,0 +1,46 @@
+2. On the given Windows system, access the explorer.exe process and use the Process Explorer tool to check the loaded DLLs. Identify the most recently loaded DLL among them. Provide the DLL name and a screenshot.
+
+Response (Translated):
+This task is about inspecting the explorer.exe process using Process Explorer and identifying the most recently loaded DLL. Here's how to do it step-by-step:
+
+✅ Steps:
+Open Process Explorer:
+
+Download Process Explorer from the official Microsoft website.
+
+Run the procexp.exe file.
+
+Find the explorer.exe process:
+
+In the list, locate explorer.exe, right-click on it, and select Properties.
+
+Go to the "DLLs" tab:
+
+In the window that opens, go to the "DLLs" tab.
+
+You'll see all DLL files loaded into that process.
+
+Sort the list:
+
+Sort by the "Base Address" or "Path" column to find the most recently loaded DLL.
+
+For more accuracy, if the "Load Time" column is available, sort by that (you may need to add it manually).
+
+Take a screenshot:
+
+Capture a screenshot of the section showing the most recently loaded DLL (use Print Screen or Snipping Tool).
+
+📌 Sample Answer Format (if submitting a report):
+Most recently loaded DLL: example.dll
+
+Screenshot: (insert image here)
+
+Let me know if you'd like a sample screenshot or help automating this process. You can upload your screenshot here, and I can assist you with the analysis if needed.
+
+
+
+
+
+
+
+
