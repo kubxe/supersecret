@@ -1,0 +1,107 @@
+Here’s a detailed English explanation and commands for Ticket E tasks:
+
+⸻
+
+1. Find the most recent logged-in user on Kali Linux (Easy, 5 points)
+
+Command:
+
+last -n 1 | head -n 1 | awk '{print $1}'
+
+Explanation:
+The last command shows recent logins. The above extracts the username of the latest login session.
+
+⸻
+
+2. Identify processes listening on ports 22 (SSH) and 80 (HTTP) and their PIDs (Easy, 5 points)
+
+Command:
+
+sudo netstat -tulpn | grep -E ':(22|80) '
+
+Or using ss:
+
+sudo ss -tulpn | grep -E ':(22|80)'
+
+Explanation:
+Lists open TCP ports with associated process names and PIDs. The filter shows only lines for ports 22 and 80.
+
+⸻
+
+3. Create new user “student1” and set password (Easy, 5 points)
+
+Commands:
+
+sudo adduser student1
+
+	•	When prompted for full name and other info, press Enter to skip.
+
+Then set the password:
+
+sudo passwd student1
+
+	•	Enter the password twice as prompted.
+
+Expected output: Confirmation messages about user creation and password update.
+
+⸻
+
+4. Capture SYN packets during an nmap TCP SYN scan with tcpdump (Medium, 10 points)
+
+On target Kali Linux VM:
+
+sudo tcpdump -i <interface> 'tcp[tcpflags] & tcp-syn != 0 and tcp[tcpflags] & tcp-ack == 0'
+
+	•	Replace <interface> with your network interface, e.g., eth0 or ens33.
+
+On attacker VM: Run nmap SYN scan against the target:
+
+nmap -sS <target_ip>
+
+Explanation:
+Tcpdump command filters SYN packets without ACK flags, capturing the scan packets.
+
+⸻
+
+5. Scan Metasploitable2 for vulnerabilities on port 445 using nmap (Medium, 10 points)
+
+Command:
+
+nmap -p 445 --script vuln <Metasploitable2_IP>
+
+Look for: CVE code and vulnerability title in the output, for example:
+	•	CVE-2009-3103 (Microsoft Windows SMB vulnerability)
+	•	Or other identified CVEs.
+
+⸻
+
+6. Find users logged in during last 24 hours with last and grep (Medium, 10 points)
+
+Command:
+
+last | grep "$(date +%b\ %d)" | awk '{print $1, $4, $5, $6, $7}' | uniq | head -n 2
+
+Explanation:
+Filters last login entries for today’s date, extracts usernames and login times, shows two distinct users.
+
+⸻
+
+7. Vulnerability scan comparison on Metasploitable2 with nmap and Nessus (Hard, 20 points)
+
+Steps:
+	•	Run nmap scan:
+
+nmap -A --script vuln <Metasploitable2_IP>
+
+	•	Note detected vulnerabilities, CVE codes, and descriptions.
+	•	Run Nessus scan with “Advanced Scan” profile on same target.
+
+Compare:
+	•	Identify a common vulnerability detected by both tools (e.g., vsftpd backdoor or Samba vulnerabilities).
+	•	Write CVE number and brief explanation.
+	•	Explain how nmap presents the info (usually as script output with brief info), and Nessus (detailed report with risk ratings, remediation advice).
+	•	Discuss extra security recommendations Nessus might provide (patching, disabling vulnerable services, applying updates).
+
+⸻
+
+If you want, I can help you write example outputs or reports for each step!
