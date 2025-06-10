@@ -1,0 +1,39 @@
+Using Wireshark, apply an SSL or TLS protocol filter to analyze traffic over port 443 (HTTPS). Identify which IP addresses communicated over this port, and provide the participating IP addresses along with the total number of packets.
+
+Step-by-step instructions:
+Open Wireshark and load your capture file or start a new capture.
+
+Apply the filter for SSL/TLS traffic on port 443:
+
+ini
+Copy
+Edit
+tcp.port == 443
+or more specifically for TLS:
+
+nginx
+Copy
+Edit
+tls
+Look at the “Source” and “Destination” IP addresses in the packet list pane.
+
+To get a list of IP addresses involved:
+
+Go to Statistics > Conversations.
+
+Select the IPv4 tab.
+
+Filter or note the entries involving port 443.
+
+This shows pairs of IPs communicating over that port, plus packet counts.
+
+Record the IP addresses of communicating parties.
+
+Note the total number of packets shown for these conversations.
+
+Example answer:
+Source IP	Destination IP	Number of Packets
+192.168.1.10	93.184.216.34	120
+192.168.1.10	172.217.10.46	95
+
+Total packets over port 443: 215
