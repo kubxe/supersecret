@@ -1,0 +1,56 @@
+Task:
+Using Process Explorer and TCPView, investigate running processes on the system to identify:
+
+Processes performing file system access and registry write operations.
+
+Processes establishing network connections.
+
+If such processes are found, collect information on:
+
+The DLL files they have loaded.
+
+The IP addresses they are communicating with.
+
+Summarize your findings briefly.
+
+Step-by-step guide:
+Open Process Explorer:
+
+Sort or filter processes by their file system and registry activity.
+
+Look for processes with active handles to files or registry keys indicating write operations.
+
+Right-click a suspicious process and check its Properties → DLLs tab to list loaded DLLs.
+
+Open TCPView:
+
+Observe all network connections established by processes.
+
+Identify which processes have active TCP/UDP connections.
+
+Note the remote IP addresses and ports they are connected to.
+
+Cross-reference findings:
+
+Identify processes that do both: file/registry activity and network communication.
+
+Summarize:
+
+Example:
+Process malware.exe
+
+Loaded DLLs: ws2_32.dll, kernel32.dll, user32.dll
+
+Connected IPs: 203.0.113.10:443, 198.51.100.22:80
+
+Activity: Writes to HKCU\Software\Microsoft\Windows\CurrentVersion\Run (auto-start registry key) and modifies files in %APPDATA%.
+
+Let me know if you want help analyzing a specific process or preparing a detailed report!
+
+
+
+
+
+
+
+
