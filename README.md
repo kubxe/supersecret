@@ -1,2 +1,2 @@
 # supersecret
-Nihad sabaha demeyin
+Explorer practice
